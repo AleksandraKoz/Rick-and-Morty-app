@@ -1,13 +1,21 @@
-import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import {MainStack} from './src/stacks/Main';
+import { MainStack } from './src/stacks/Main';
+import { CharactersProvider } from './src/context/CharactersContext';
 
-function App(): React.JSX.Element {
+const queryClient = new QueryClient();
+
+function App (): React.JSX.Element {
   return (
-    <NavigationContainer>
-      <MainStack />
-    </NavigationContainer>
+    <QueryClientProvider client={queryClient}>
+      <CharactersProvider>
+        <NavigationContainer>
+          <MainStack/>
+        </NavigationContainer>
+      </CharactersProvider>
+    </QueryClientProvider>
   );
 }
 
