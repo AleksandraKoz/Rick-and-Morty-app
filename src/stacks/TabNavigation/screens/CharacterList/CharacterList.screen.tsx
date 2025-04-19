@@ -1,28 +1,27 @@
-import {Button, SafeAreaView, View} from 'react-native';
 import React from 'react';
-import {styles} from './CharacterList.styled';
-import {useNavigation} from '@react-navigation/native';
-import {MainStackNavigationProp} from '../../../Main/Main.routes';
+import { FlatList, SafeAreaView } from 'react-native';
 
-import NavBar from "../../../components/Base/NavBar/NavBar";
+import NavBar from '../../../components/Base/NavBar/NavBar';
 import TitleText from "../../../components/Base/TitleText/TitleText";
+import CharacterCard from "../../../components/CharacterList/CharacterCard";
+import { useCharacters } from "../../../../hooks/useCharacters";
+import { styles } from './CharacterList.styled';
 
 const CharacterListScreen = () => {
-  const {navigate} = useNavigation<MainStackNavigationProp>();
+  const { data: characters } = useCharacters();
+  
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.background}>
       <NavBar/>
-      <View style={styles.container}>
-        <TitleText title="Characters"/>
-        <Button
-          title="Navigate to Details screen"
-          onPress={(): void => {
-            navigate('CharacterDetailsStack', {
-              screen: 'CharacterDetailsScreen',
-            });
-          }}
-        />
-      </View>
+      <FlatList
+        data={characters}
+        contentContainerStyle={styles.container}
+        ListHeaderComponent={<TitleText title="Characters"/>}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <CharacterCard characterData={item}/>
+        )}
+      />
     </SafeAreaView>
   );
 };
