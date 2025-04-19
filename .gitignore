@@ -40,3 +40,6 @@ yarn-error.*
 
 # Yarn
 .yarn/
+
+# Local
+*.lock
