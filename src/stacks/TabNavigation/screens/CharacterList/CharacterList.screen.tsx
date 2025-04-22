@@ -1,23 +1,46 @@
-import {View, Text, Button} from 'react-native';
 import React from 'react';
-import {styles} from './CharacterList.styled';
-import {useNavigation} from '@react-navigation/native';
-import {MainStackNavigationProp} from '../../../Main/Main.routes';
+import { ActivityIndicator, FlatList, SafeAreaView } from 'react-native';
+
+import NavBar from '../../../components/Base/NavBar/NavBar';
+import TitleText from "../../../components/Base/TitleText/TitleText";
+import CharacterCard from "../../../components/CharacterList/CharacterCard";
+import { useCharacters } from "../../../../hooks/useCharacters";
+import { styles } from './CharacterList.styled';
 
 const CharacterListScreen = () => {
-  const {navigate} = useNavigation<MainStackNavigationProp>();
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useCharacters();
+  
+  const characters = data?.pages.flatMap((page) => page.results) ?? [];
+  
+  const loadMore = () => {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  };
+  
   return (
-    <View style={styles.container}>
-      <Text>Implement CharactersListScreen</Text>
-      <Button
-        title="Navigate to Details screen"
-        onPress={(): void => {
-          navigate('CharacterDetailsStack', {
-            screen: 'CharacterDetailsScreen',
-          });
-        }}
+    <SafeAreaView style={styles.background}>
+      <NavBar/>
+      <FlatList
+        data={characters}
+        contentContainerStyle={styles.container}
+        ListHeaderComponent={<TitleText title="Characters"/>}
+        keyExtractor={(item) => item.id.toString()}
+        renderItem={({ item }) => (
+          <CharacterCard key={item.created} characterData={item}/>
+        )}
+        onEndReached={loadMore}
+        onEndReachedThreshold={0.5}
+        ListFooterComponent={
+          isFetchingNextPage ? <ActivityIndicator style={{ marginVertical: 16 }}/> : null
+        }
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
