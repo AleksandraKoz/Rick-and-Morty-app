@@ -14,10 +14,10 @@ const CharacterCardData = ({ characterData }: TCharacterCardData) => {
   return (
     <View style={styles.infoContainer}>
       {characterKeys.map((item) => (
-        <>
-          <Text style={styles.titleText}>{item.toUpperCase()}</Text>
+        <View key={String(item)}>
+          <Text style={styles.titleText}>{String(item).toUpperCase()}</Text>
           <Text style={styles.nameText}>{String(characterData[item])}</Text>
-        </>
+        </View>
       ))}
     </View>
   );
