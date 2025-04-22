@@ -1,6 +1,8 @@
 import React from 'react';
-import { View } from "react-native";
+import { View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 import { CharacterListScreen } from './screens/CharacterList';
 import { FavoriteCharactersScreen } from './screens/FavoriteCharacters';
 import { FontAwesome } from "@expo/vector-icons";
@@ -8,6 +10,8 @@ import { FontAwesome } from "@expo/vector-icons";
 const Tab = createBottomTabNavigator();
 
 export const TabNavigationStack = () => {
+  const insets = useSafeAreaInsets();
+  
   return (
     <Tab.Navigator
       screenOptions={{
@@ -18,9 +22,13 @@ export const TabNavigationStack = () => {
         tabBarInactiveBackgroundColor: "#162C1B",
         tabBarIconStyle: { paddingTop: 0, marginTop: 8 },
         tabBarLabelStyle: { fontStyle: '400', fontSize: 14 },
-        tabBarStyle: { position: 'absolute', paddingBottom: 0, paddingTop: -16 },
+        tabBarStyle: {
+          position: 'absolute',
+          height: 75 + insets.bottom,
+          paddingBottom: insets.bottom,
+        },
         tabBarBackground: () => (
-          <View style={{ backgroundColor: '#162C1B' }}/>
+          <View style={{ flex: 1, backgroundColor: '#162C1B' }}/>
         ),
       }}
     >
