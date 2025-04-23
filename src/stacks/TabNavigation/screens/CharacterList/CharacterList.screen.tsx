@@ -5,7 +5,17 @@ import NavBar from '../../../components/Base/NavBar/NavBar';
 import TitleText from "../../../components/Base/TitleText/TitleText";
 import CharacterCard from "../../../components/CharacterList/CharacterCard";
 import { useCharacters } from "../../../../hooks/useCharacters";
+import SearchBar from "../../../components/Base/SearchBar/SearchBar";
 import { styles } from './CharacterList.styled';
+
+const screenHeader = () => {
+  return (
+    <>
+      <TitleText title="Characters"/>
+      <SearchBar/>
+    </>
+  )
+}
 
 const CharacterListScreen = () => {
   const {
@@ -29,7 +39,7 @@ const CharacterListScreen = () => {
       <FlatList
         data={characters}
         contentContainerStyle={styles.container}
-        ListHeaderComponent={<TitleText title="Characters"/>}
+        ListHeaderComponent={screenHeader}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <CharacterCard key={item.created} characterData={item}/>
