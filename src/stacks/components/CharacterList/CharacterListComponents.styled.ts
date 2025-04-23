@@ -9,12 +9,7 @@ export const styles = StyleSheet.create({
     margin: 10,
     flex: 1,
   },
-  nameText: {
-    fontSize: 16,
-    flexWrap: 'wrap',
-    color: '#162C1B',
-    fontWeight: '400',
-    marginTop: 4,
+  infoItem: {
     marginBottom: 18
   },
   imageContainer: {

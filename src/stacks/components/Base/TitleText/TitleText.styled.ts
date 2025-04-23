@@ -13,4 +13,11 @@ export const styles = StyleSheet.create({
     fontWeight: '500',
     letterSpacing: 1
   },
+  data: {
+    fontSize: 16,
+    flexWrap: 'wrap',
+    color: '#162C1B',
+    fontWeight: '400',
+    marginTop: 4,
+  }
 });

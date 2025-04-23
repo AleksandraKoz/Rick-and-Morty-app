@@ -5,7 +5,7 @@ import { styles } from './TitleText.styled';
 
 interface ITitleText {
   title: string;
-  type?: 'title' | 'label',
+  type?: 'title' | 'label' | 'data',
 }
 
 const TitleText = ({ title, type = 'title' }: ITitleText): React.JSX.Element => {
