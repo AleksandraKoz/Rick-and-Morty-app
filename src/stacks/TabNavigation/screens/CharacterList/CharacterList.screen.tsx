@@ -41,7 +41,7 @@ const CharacterListScreen = () => {
         ListHeaderComponent={screenHeader(searchTerm, setSearchTerm)}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <CharacterCard key={item.created} characterData={item}/>
+          <CharacterCard characterData={item}/>
         )}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
