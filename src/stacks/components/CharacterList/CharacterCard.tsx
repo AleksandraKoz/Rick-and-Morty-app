@@ -22,6 +22,7 @@ const CharacterCard = ({ characterData }: TCharacterListCard) => {
     setSelectedCharacter(character);
     navigate('CharacterDetailsStack', {
       screen: 'CharacterDetailsScreen',
+      params: { character },
     });
   };
   
