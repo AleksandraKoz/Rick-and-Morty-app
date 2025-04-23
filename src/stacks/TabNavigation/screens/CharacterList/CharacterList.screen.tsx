@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { ActivityIndicator, FlatList, SafeAreaView } from 'react-native';
 
 import NavBar from '../../../components/Base/NavBar/NavBar';
-import TitleText from "../../../components/Base/TitleText/TitleText";
-import CharacterCard from "../../../components/CharacterList/CharacterCard";
-import { useCharacters } from "../../../../hooks/useCharacters";
-import SearchBar from "../../../components/Base/SearchBar/SearchBar";
+import TitleText from '../../../components/Base/TitleText/TitleText';
+import CharacterCard from '../../../components/CharacterList/CharacterCard';
+import { useCharacters } from '../../../../hooks/useCharacters';
+import SearchBar from '../../../components/Base/SearchBar/SearchBar';
 import { styles } from './CharacterList.styled';
 
 const screenHeader = (searchTerm: string, setSearchTerm: (param: string) => void) => (
