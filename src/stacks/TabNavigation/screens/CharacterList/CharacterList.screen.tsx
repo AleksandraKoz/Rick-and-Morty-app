@@ -1,19 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ActivityIndicator, FlatList, SafeAreaView } from 'react-native';
 
 import NavBar from '../../../components/Base/NavBar/NavBar';
-import TitleText from "../../../components/Base/TitleText/TitleText";
-import CharacterCard from "../../../components/CharacterList/CharacterCard";
-import { useCharacters } from "../../../../hooks/useCharacters";
+import CharacterCard from '../../../components/CharacterList/CharacterCard';
+import MainScreenHeader from "../../../components/Base/MainScreenHeader/MainScreenHeader";
+import { useCharacters } from '../../../../hooks/useCharacters';
 import { styles } from './CharacterList.styled';
 
 const CharacterListScreen = () => {
+  const [ searchTerm, setSearchTerm ] = useState('');
   const {
     data,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useCharacters();
+  } = useCharacters(searchTerm);
   
   const characters = data?.pages.flatMap((page) => page.results) ?? [];
   
@@ -29,10 +30,10 @@ const CharacterListScreen = () => {
       <FlatList
         data={characters}
         contentContainerStyle={styles.container}
-        ListHeaderComponent={<TitleText title="Characters"/>}
+        ListHeaderComponent={<MainScreenHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <CharacterCard key={item.created} characterData={item}/>
+          <CharacterCard characterData={item}/>
         )}
         onEndReached={loadMore}
         onEndReachedThreshold={0.5}
