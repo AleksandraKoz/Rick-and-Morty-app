@@ -5,11 +5,11 @@ import CharacterDetailsCard from './CharacterDetailsCard';
 import { Character } from '../../../api/characterType';
 import { styles } from './CharacterDetailsComponents.styled';
 
-type TCharacterDetailsScreen = {
+type TCharacterDetailsDataSection = {
   characterData: Character
 }
 
-const CharacterDetailsDataSection = ({ characterData }: TCharacterDetailsScreen) => {
+const CharacterDetailsDataSection = ({ characterData }: TCharacterDetailsDataSection) => {
   const characterKeys: (keyof Character)[] = [ 'status', 'species', 'gender', 'origin' ];
   
   return (
