@@ -7,5 +7,9 @@ export const styles = StyleSheet.create({
     padding: 8,
     width: '48%',
     marginTop: 16,
-  }
+  },
+  nameWrapper: {
+    marginTop: 24,
+    marginHorizontal: 8,
+  },
 });
