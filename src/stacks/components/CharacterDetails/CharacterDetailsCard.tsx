@@ -11,7 +11,7 @@ interface ICharacterDetailsCard {
 
 const CharacterDetailsCard = ({ sectionName, sectionData }: ICharacterDetailsCard) => {
   return (
-    <View key={sectionName} style={styles.dataWrapper}>
+    <View key={sectionName} style={styles.dataCardWrapper}>
       <TitleText title={sectionName.toUpperCase()} type="label"/>
       <TitleText title={sectionData} type="data"/>
     </View>
