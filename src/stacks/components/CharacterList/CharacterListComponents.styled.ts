@@ -9,12 +9,6 @@ export const styles = StyleSheet.create({
     margin: 10,
     flex: 1,
   },
-  titleText: {
-    fontSize: 12,
-    color: '#59695C',
-    fontWeight: '500',
-    letterSpacing: 1
-  },
   nameText: {
     fontSize: 16,
     flexWrap: 'wrap',
