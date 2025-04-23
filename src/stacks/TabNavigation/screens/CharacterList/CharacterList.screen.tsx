@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ActivityIndicator, FlatList, SafeAreaView } from 'react-native';
 
 import NavBar from '../../../components/Base/NavBar/NavBar';
@@ -8,22 +8,21 @@ import { useCharacters } from "../../../../hooks/useCharacters";
 import SearchBar from "../../../components/Base/SearchBar/SearchBar";
 import { styles } from './CharacterList.styled';
 
-const screenHeader = () => {
-  return (
-    <>
-      <TitleText title="Characters"/>
-      <SearchBar/>
-    </>
-  )
-}
+const screenHeader = (searchTerm: string, setSearchTerm: (param: string) => void) => (
+  <>
+    <TitleText title="Characters"/>
+    <SearchBar query={searchTerm} onChangeQuery={setSearchTerm}/>
+  </>
+);
 
 const CharacterListScreen = () => {
+  const [ searchTerm, setSearchTerm ] = useState('');
   const {
     data,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useCharacters();
+  } = useCharacters(searchTerm);
   
   const characters = data?.pages.flatMap((page) => page.results) ?? [];
   
@@ -39,7 +38,7 @@ const CharacterListScreen = () => {
       <FlatList
         data={characters}
         contentContainerStyle={styles.container}
-        ListHeaderComponent={screenHeader}
+        ListHeaderComponent={screenHeader(searchTerm, setSearchTerm)}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <CharacterCard key={item.created} characterData={item}/>
