@@ -25,5 +25,10 @@ export const styles = StyleSheet.create({
     color: '#fff',
     marginLeft: 8,
     fontSize: 14,
+  },
+  dataSectionWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
   }
 });
