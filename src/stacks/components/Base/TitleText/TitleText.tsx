@@ -1,13 +1,16 @@
 import React from 'react';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 
-import {styles} from './TitleText.styled';
+import { styles } from './TitleText.styled';
 
-type TTitleText = { title: string }
+interface ITitleText {
+  title: string;
+  type?: 'title' | 'label' | 'data',
+}
 
-const TitleText = ({title}: TTitleText) => {
+const TitleText = ({ title, type = 'title' }: ITitleText): React.JSX.Element => {
   return (
-    <Text style={styles.title}>{title}</Text>
+    <Text style={styles[type]}>{title}</Text>
   );
 };
 

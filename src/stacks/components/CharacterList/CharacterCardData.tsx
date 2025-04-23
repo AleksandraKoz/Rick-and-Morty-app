@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 
 import { Character } from '../../../api/characters';
 import { styles } from './CharacterListComponents.styled';
+import TitleText from "../Base/TitleText/TitleText";
 
 type TCharacterCardData = {
   characterData: Character;
@@ -14,9 +15,9 @@ const CharacterCardData = ({ characterData }: TCharacterCardData) => {
   return (
     <View style={styles.infoContainer}>
       {characterKeys.map((item) => (
-        <View key={String(item)}>
-          <Text style={styles.titleText}>{String(item).toUpperCase()}</Text>
-          <Text style={styles.nameText}>{String(characterData[item])}</Text>
+        <View key={String(item)} style={styles.infoItem}>
+          <TitleText title={String(item).toUpperCase()} type="label"/>
+          <TitleText title={String(characterData[item])} type="data"/>
         </View>
       ))}
     </View>
