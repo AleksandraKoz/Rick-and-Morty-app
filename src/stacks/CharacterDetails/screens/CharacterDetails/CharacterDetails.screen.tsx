@@ -1,6 +1,6 @@
 import React from 'react';
 import { Animated, Image, SafeAreaView, } from 'react-native';
-import { RouteProp, useNavigation, useRoute, } from '@react-navigation/native';
+import { RouteProp, useRoute, } from '@react-navigation/native';
 
 import NavBar from '../../../components/Base/NavBar/NavBar';
 import Wrapper from '../../../components/Base/Wrapper/Wrapper';
@@ -8,7 +8,7 @@ import { styles } from './CharacterDetails.styled';
 import CharacterName from '../../../components/CharacterDetails/CharacterName';
 import WideLikeButton from '../../../components/CharacterDetails/WideLikeButton';
 import CharacterDetailsDataSection from '../../../components/CharacterDetails/CharacterDetailsDataSection';
-import { CharacterDetailsStackNavigationProp, CharacterDetailsStackParamList, } from '../../CharacterDetails.routes';
+import { CharacterDetailsStackParamList } from '../../CharacterDetails.routes';
 import GoBackButton from "../../../components/Base/GoBackButton/GoBackButton";
 import ScrollView = Animated.ScrollView;
 
@@ -18,7 +18,6 @@ type DetailsRouteProp = RouteProp<
 >;
 
 const CharacterDetailsScreen = () => {
-  const navigation = useNavigation<CharacterDetailsStackNavigationProp>();
   const { params } = useRoute<DetailsRouteProp>();
   const { character } = params;
   
