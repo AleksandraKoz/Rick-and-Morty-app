@@ -32,7 +32,7 @@ const CharacterCard = ({ characterData }: TCharacterListCard) => {
         <CharacterCardData characterData={characterData}/>
         <View style={styles.imageContainer}>
           <Image source={{ uri: characterData.image }} style={styles.avatar}/>
-          <LikeButton/>
+          <LikeButton character={characterData}/>
         </View>
       </Wrapper>
     </TouchableOpacity>
