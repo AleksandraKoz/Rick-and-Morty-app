@@ -1,20 +1,17 @@
-import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
+import { useCharactersContext } from '../context/CharactersContext';
+import { fetchFavouriteCharacters } from '../api/favouriteCharacters';
 import { Character } from '../api/characterType';
 
-export const useFavouriteCharacters = (favouriteCharactersIdList: number[]) => {
+export const useFavouriteCharacters = () => {
+  const { favouriteCharactersList } = useCharactersContext();
+  
   return useQuery<Character[], Error>({
-    queryKey: [ 'favourites', favouriteCharactersIdList ],
-    queryFn: async () => {
-      if (favouriteCharactersIdList.length === 0) return [];
-      const responseData = await axios.get<Character | Character[]>(
-        `https://rickandmortyapi.com/api/character/${favouriteCharactersIdList.join(',')}`,
-      );
-      return Array.isArray(responseData.data) ? responseData.data : [ responseData.data ];
-    },
-    enabled: true,
+    queryKey: [ 'favourites', favouriteCharactersList ],
+    queryFn: () =>
+      fetchFavouriteCharacters(favouriteCharactersList),
+    enabled: favouriteCharactersList.length > 0,
+    initialData: [] as Character[],
   });
 };
-
-
