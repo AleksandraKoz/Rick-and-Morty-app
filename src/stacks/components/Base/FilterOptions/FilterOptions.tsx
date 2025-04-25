@@ -13,21 +13,21 @@ const STATUS_OPTIONS: characterStatus[] = Object.values(characterStatus);
 const SPECIES_OPTIONS: string[] = [ 'Human', 'Humanoid', 'Alien', 'Robot' ];
 
 export const FilterOptions = (): React.JSX.Element => {
-  const [ selectedStatuses, setSelectedStatuses ] = useState<string[]>([]);
-  const [ selectedSpecies, setSelectedSpecies ] = useState<string[]>([]);
+  const [ selectedStatus, setSelectedStatus ] = useState<string>('');
+  const [ selectedSpecies, setSelectedSpecies ] = useState<string>('');
   
   const handleToggle = (
     toggledOption: string,
-    setList: React.Dispatch<React.SetStateAction<string[]>>
+    setList: React.Dispatch<React.SetStateAction<string>>
   ) => {
     setList((currentList) =>
-      currentList.includes(toggledOption) ? currentList.filter((listValue) => listValue !== toggledOption) : [ ...currentList, toggledOption ]
+      currentList === toggledOption ? '' : toggledOption
     );
   };
   
   const handleReset = () => {
-    setSelectedStatuses([]);
-    setSelectedSpecies([]);
+    setSelectedStatus('');
+    setSelectedSpecies('');
   };
   
   const handleApply = () => {
@@ -36,10 +36,10 @@ export const FilterOptions = (): React.JSX.Element => {
   
   const renderOption = (
     label: string,
-    selectedList: string[],
+    selectedList: string,
     onToggle: () => void
   ) => {
-    const checked = selectedList.includes(label);
+    const checked = selectedList === label;
     return (
       <TouchableOpacity
         key={label}
@@ -62,8 +62,8 @@ export const FilterOptions = (): React.JSX.Element => {
       <ScrollView>
         <TitleText title="STATUS" type='label'/>
         {STATUS_OPTIONS.map((status) =>
-          renderOption(status, selectedStatuses, () =>
-            handleToggle(status, setSelectedStatuses)
+          renderOption(status, selectedStatus, () =>
+            handleToggle(status, setSelectedStatus)
           )
         )}
         <TitleText title="SPECIES" type='label'/>
