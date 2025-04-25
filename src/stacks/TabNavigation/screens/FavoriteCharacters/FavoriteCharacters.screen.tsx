@@ -9,7 +9,7 @@ import { styles } from './FavoriteCharacters.styled';
 
 const FavoriteCharactersScreen = () => {
   const [ searchTerm, setSearchTerm ] = useState('');
-  const { data: favouriteCharactersData = [], isLoading, isError, error } =
+  const { data: favouriteCharactersData = [] } =
     useFavouriteCharacters();
   
   const filtered = favouriteCharactersData.filter(singleCharacter =>

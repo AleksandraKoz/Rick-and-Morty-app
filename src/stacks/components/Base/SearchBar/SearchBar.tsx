@@ -7,7 +7,7 @@ import { styles } from './SearchBar.styles';
 interface ISearchBar {
   query: string;
   onChangeQuery: (text: string) => void;
-};
+}
 
 const SearchBar = ({ query, onChangeQuery }: ISearchBar) => (
   <View style={styles.container}>
