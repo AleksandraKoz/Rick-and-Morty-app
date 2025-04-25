@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 
 import { characterStatus } from '../../../../api/characterType';
@@ -13,11 +13,9 @@ const SPECIES_OPTIONS: string[] = [ 'Human', 'Humanoid', 'Alien', 'Robot', 'Unkn
 
 interface IFilterOptions {
   handleReset: () => void;
-  handleApply: () => void;
+  handleApply: (status: string, species: string) => void;
   selectedStatus: string;
   selectedSpecies: string;
-  handleStatusToggle: (option: string) => void;
-  handleSpeciesToggle: (option: string) => void;
 }
 
 export const FilterOptions = ({
@@ -25,37 +23,48 @@ export const FilterOptions = ({
                                 handleApply,
                                 selectedStatus,
                                 selectedSpecies,
-                                handleStatusToggle,
-                                handleSpeciesToggle,
-                              }: IFilterOptions): React.JSX.Element => (
-  <Wrapper style={styles.modalContent}>
-    <ScrollView>
-      <OptionsSection
-        title="STATUS"
-        options={STATUS_OPTIONS}
-        selectedValue={selectedStatus}
-        onToggle={handleStatusToggle}
-      />
-      <OptionsSection
-        title="SPECIES"
-        options={SPECIES_OPTIONS}
-        selectedValue={selectedSpecies}
-        onToggle={handleSpeciesToggle}
-      />
-    </ScrollView>
-    <View style={styles.buttonsRow}>
-      <Button
-        title="Reset"
-        onPress={handleReset}
-        variant={ButtonVariant.PrimaryOutline}
-      />
-      <Button
-        title="Apply"
-        onPress={handleApply}
-        variant={ButtonVariant.Primary}
-      />
-    </View>
-  </Wrapper>
-);
+                              }: IFilterOptions): React.JSX.Element => {
+  const [ tempSelectedStatus, setTempSelectedStatus ] = useState<string>(selectedStatus)
+  const [ tempSelectedSpecies, setTempSelectedSpecies ] = useState<string>(selectedSpecies)
+  
+  const handleStatusToggle = (option: string) => {
+    setTempSelectedStatus(tempSelectedStatus === option ? '' : option);
+  };
+  
+  const handleSpeciesToggle = (option: string) => {
+    setTempSelectedSpecies(tempSelectedSpecies === option ? '' : option);
+  };
+  
+  return (
+    <Wrapper style={styles.modalContent}>
+      <ScrollView>
+        <OptionsSection
+          title="STATUS"
+          options={STATUS_OPTIONS}
+          selectedValue={tempSelectedStatus}
+          onToggle={handleStatusToggle}
+        />
+        <OptionsSection
+          title="SPECIES"
+          options={SPECIES_OPTIONS}
+          selectedValue={tempSelectedSpecies}
+          onToggle={handleSpeciesToggle}
+        />
+      </ScrollView>
+      <View style={styles.buttonsRow}>
+        <Button
+          title="Reset"
+          onPress={handleReset}
+          variant={ButtonVariant.PrimaryOutline}
+        />
+        <Button
+          title="Apply"
+          onPress={() => handleApply(tempSelectedStatus, tempSelectedSpecies)}
+          variant={ButtonVariant.Primary}
+        />
+      </View>
+    </Wrapper>
+  );
+}
 
 export default FilterOptions;

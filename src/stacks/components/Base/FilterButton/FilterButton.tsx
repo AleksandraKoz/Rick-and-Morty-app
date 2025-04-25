@@ -24,16 +24,10 @@ const FilterButton = ({
     setIsClicked(prevState => !prevState);
   };
   
-  const handleStatusToggle = (option: string) => {
-    setSelectedStatus(selectedStatus === option ? '' : option);
-  };
-  
-  const handleSpeciesToggle = (option: string) => {
-    setSelectedSpecies(selectedSpecies === option ? '' : option);
-  };
-  
-  const handleApply = () => {
-    setIsClicked(false);
+  const handleApply = (status: string, species: string) => {
+    setSelectedStatus(status);
+    setSelectedSpecies(species);
+    handleButtonClick()
   };
   
   const handleReset = () => {
@@ -70,8 +64,6 @@ const FilterButton = ({
           handleApply={handleApply}
           selectedStatus={selectedStatus}
           selectedSpecies={selectedSpecies}
-          handleStatusToggle={handleStatusToggle}
-          handleSpeciesToggle={handleSpeciesToggle}
         />
       </Modal>
     </>
