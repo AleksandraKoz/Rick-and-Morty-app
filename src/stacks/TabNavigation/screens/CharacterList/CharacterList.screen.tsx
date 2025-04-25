@@ -38,6 +38,7 @@ const CharacterListScreen = () => {
           <MainScreenHeader
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
+            isAllCharactersScreen
             selectedStatus={selectedStatus}
             setSelectedStatus={setSelectedStatus}
             selectedSpecies={selectedSpecies}

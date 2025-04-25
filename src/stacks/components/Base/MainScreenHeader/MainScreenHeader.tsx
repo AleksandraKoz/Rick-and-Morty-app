@@ -6,6 +6,7 @@ import FilterButton from '../FilterButton/FilterButton';
 interface IMainScreenHeader {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
+  isAllCharactersScreen?: boolean;
   selectedStatus: string;
   setSelectedStatus: (status: string) => void;
   selectedSpecies: string;
@@ -15,6 +16,7 @@ interface IMainScreenHeader {
 const MainScreenHeader = ({
                             searchTerm,
                             setSearchTerm,
+                            isAllCharactersScreen = false,
                             selectedStatus,
                             setSelectedStatus,
                             selectedSpecies,
@@ -23,12 +25,14 @@ const MainScreenHeader = ({
   <>
     <TitleText title="Characters"/>
     <SearchBar query={searchTerm} onChangeQuery={setSearchTerm}/>
-    <FilterButton
-      selectedStatus={selectedStatus}
-      setSelectedStatus={setSelectedStatus}
-      selectedSpecies={selectedSpecies}
-      setSelectedSpecies={setSelectedSpecies}
-    />
+    {isAllCharactersScreen &&
+      <FilterButton
+        selectedStatus={selectedStatus}
+        setSelectedStatus={setSelectedStatus}
+        selectedSpecies={selectedSpecies}
+        setSelectedSpecies={setSelectedSpecies}
+      />
+    }
   </>
 );
 
