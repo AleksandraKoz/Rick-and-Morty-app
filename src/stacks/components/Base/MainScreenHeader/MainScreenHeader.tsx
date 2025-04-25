@@ -4,6 +4,7 @@ import { View } from 'react-native';
 import TitleText from '../TitleText/TitleText';
 import SearchBar from '../SearchBar/SearchBar';
 import FilterButton from '../FilterButton/FilterButton';
+import { styles } from './MainScreenHeader.styles';
 
 interface IMainScreenHeader {
   searchTerm: string;
@@ -24,7 +25,7 @@ const MainScreenHeader = ({
                             selectedSpecies,
                             setSelectedSpecies,
                           }: IMainScreenHeader): React.JSX.Element => (
-  <View style={{ backgroundColor: '#F4F6F5', paddingHorizontal: 16, marginVertical: 16 }}>
+  <View style={styles.headerBackground}>
     <TitleText title="Characters"/>
     <SearchBar query={searchTerm} onChangeQuery={setSearchTerm}/>
     {isAllCharactersScreen &&
