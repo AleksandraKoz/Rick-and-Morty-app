@@ -21,11 +21,4 @@ export const styles = StyleSheet.create({
   modalOverlay: {
     flex: 1,
   },
-  modalContent: {
-    position: 'absolute',
-    top: 290,
-    left: 16,
-    right: 16,
-    zIndex: 9999,
-  },
 });

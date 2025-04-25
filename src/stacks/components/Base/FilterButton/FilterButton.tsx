@@ -65,16 +65,14 @@ const FilterButton = ({
         <TouchableWithoutFeedback onPress={handleButtonClick}>
           <View style={styles.modalOverlay}/>
         </TouchableWithoutFeedback>
-        <View style={styles.modalContent}>
-          <FilterOptions
-            handleReset={handleReset}
-            handleApply={handleApply}
-            selectedStatus={selectedStatus}
-            selectedSpecies={selectedSpecies}
-            handleStatusToggle={handleStatusToggle}
-            handleSpeciesToggle={handleSpeciesToggle}
-          />
-        </View>
+        <FilterOptions
+          handleReset={handleReset}
+          handleApply={handleApply}
+          selectedStatus={selectedStatus}
+          selectedSpecies={selectedSpecies}
+          handleStatusToggle={handleStatusToggle}
+          handleSpeciesToggle={handleSpeciesToggle}
+        />
       </Modal>
     </>
   );
