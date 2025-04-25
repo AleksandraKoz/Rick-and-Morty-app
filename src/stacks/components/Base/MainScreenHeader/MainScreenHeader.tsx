@@ -9,8 +9,6 @@ interface IMainScreenHeader {
   setSearchTerm: (param: string) => void
 }
 
-const buttonName = 'FILTER'
-
 const MainScreenHeader = ({ searchTerm, setSearchTerm }: IMainScreenHeader) => (
   <>
     <TitleText title="Characters"/>
