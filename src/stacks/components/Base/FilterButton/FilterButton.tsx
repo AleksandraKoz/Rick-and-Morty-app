@@ -44,7 +44,7 @@ const FilterButton = ({
   return (
     <>
       <TouchableOpacity
-        style={styles.filterButton}
+        style={{ ...styles.filterButton, backgroundColor: isClicked ? '#162C1B' : '#224229' }}
         onPress={handleButtonClick}
       >
         <Text style={styles.filterText}>FILTER</Text>

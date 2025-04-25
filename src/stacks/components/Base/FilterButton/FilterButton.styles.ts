@@ -2,7 +2,6 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   filterButton: {
-    backgroundColor: '#224229',
     justifyContent: 'center',
     alignSelf: 'flex-start',
     alignItems: 'center',
