@@ -1,13 +1,16 @@
-import React, { createContext, ReactNode, useContext, useState } from 'react';
+import React, { createContext, ReactNode, useContext, useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Character } from '../api/characters';
+
+const FAVORITES_KEY = '@favourite_characters';
 
 type CharactersContextType = {
   characters: Character[];
   setCharacters: (chars: Character[]) => void;
   selectedCharacter: Character | null;
   setSelectedCharacter: (char: Character | null) => void;
-  favouriteCharactersList: number[],
+  favouriteCharactersList: number[];
   addCharacterToFavourites: (characterId: number) => void;
   removeCharacterFromFavourites: (characterId: number) => void;
 };
@@ -17,7 +20,35 @@ const CharactersContext = createContext<CharactersContextType | undefined>(undef
 export const CharactersProvider = ({ children }: { children: ReactNode }) => {
   const [ characters, setCharacters ] = useState<Character[]>([]);
   const [ selectedCharacter, setSelectedCharacter ] = useState<Character | null>(null);
-  const [ favouriteCharactersList, setFavouriteCharactersList ] = useState<number[]>([]);
+  const [ favouriteCharactersList, setFavouriteCharactersList ] = useState<
+    number[]
+  >([]);
+  
+  useEffect(() => {
+    (async () => {
+      try {
+        const stored = await AsyncStorage.getItem(FAVORITES_KEY);
+        if (stored) {
+          setFavouriteCharactersList(JSON.parse(stored));
+        }
+      } catch (e) {
+        console.warn('Unable to load favourite characters list. Error message: ', e);
+      }
+    })();
+  }, []);
+  
+  useEffect(() => {
+    (async () => {
+      try {
+        await AsyncStorage.setItem(
+          FAVORITES_KEY,
+          JSON.stringify(favouriteCharactersList)
+        );
+      } catch (e) {
+        console.warn('Unable to save favourite characters list. Error message: ', e);
+      }
+    })();
+  }, [ favouriteCharactersList ]);
   
   const addCharacterToFavourites = (characterId: number) => {
     setFavouriteCharactersList([ ...favouriteCharactersList, characterId ])
@@ -38,7 +69,7 @@ export const CharactersProvider = ({ children }: { children: ReactNode }) => {
         setSelectedCharacter,
         favouriteCharactersList,
         addCharacterToFavourites,
-        removeCharacterFromFavourites
+        removeCharacterFromFavourites,
       }}
     >
       {children}
