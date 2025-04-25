@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ScrollView, View } from 'react-native';
 
-import { characterStatus } from '../../../../api/characterType';
+import { CharacterSpecies, characterStatus } from '../../../../api/characterType';
 import { ButtonVariant } from '../Button/ButtonVariants';
 import OptionsSection from "../OptionsSection/OptionsSection";
 import Button from '../Button/Button';
@@ -9,7 +9,7 @@ import Wrapper from '../Wrapper/Wrapper';
 import { styles } from './FilterOptions.styles';
 
 const STATUS_OPTIONS: characterStatus[] = Object.values(characterStatus);
-const SPECIES_OPTIONS: string[] = [ 'Human', 'Humanoid', 'Alien', 'Robot', 'Animal', 'Disease', 'Cronenberg', 'Poopybutthole', 'Mythological Creature', 'Unknown' ];
+export const SPECIES_OPTIONS: string[] = Object.values(CharacterSpecies);
 
 interface IFilterOptions {
   handleReset: () => void;
