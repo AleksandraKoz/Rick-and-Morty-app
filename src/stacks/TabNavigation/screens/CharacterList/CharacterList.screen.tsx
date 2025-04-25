@@ -9,12 +9,15 @@ import { styles } from './CharacterList.styled';
 
 const CharacterListScreen = () => {
   const [ searchTerm, setSearchTerm ] = useState('');
+  const [ selectedStatus, setSelectedStatus ] = useState<string>('');
+  const [ selectedSpecies, setSelectedSpecies ] = useState<string>('');
+  
   const {
     data,
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-  } = useCharacters(searchTerm);
+  } = useCharacters(searchTerm, selectedStatus, selectedSpecies);
   
   const characters = data?.pages.flatMap((page) => page.results) ?? [];
   
@@ -31,7 +34,16 @@ const CharacterListScreen = () => {
         data={characters}
         style={styles.listBackground}
         contentContainerStyle={styles.listPadding}
-        ListHeaderComponent={<MainScreenHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>}
+        ListHeaderComponent={
+          <MainScreenHeader
+            searchTerm={searchTerm}
+            setSearchTerm={setSearchTerm}
+            selectedStatus={selectedStatus}
+            setSelectedStatus={setSelectedStatus}
+            selectedSpecies={selectedSpecies}
+            setSelectedSpecies={setSelectedSpecies}
+          />
+        }
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <CharacterCard characterData={item}/>

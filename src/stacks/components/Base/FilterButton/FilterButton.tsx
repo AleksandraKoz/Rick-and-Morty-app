@@ -1,22 +1,61 @@
 import React, { useState } from 'react';
-import { Modal, Text, TouchableOpacity, TouchableWithoutFeedback, View } from "react-native";
+import { Modal, Text, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
-import { styles } from "./FilterButton.styles";
-import FilterPanel from "../FilterOptions/FilterOptions";
+import FilterOptions from '../FilterOptions/FilterOptions';
+import { styles } from './FilterButton.styles';
 
-const FilterButton = () => {
-  const [ isClicked, setIsClicked ] = useState<boolean>(false);
+interface IFilterButton {
+  selectedStatus: string;
+  setSelectedStatus: (status: string) => void;
+  selectedSpecies: string;
+  setSelectedSpecies: (species: string) => void;
+}
+
+const FilterButton = ({
+                        selectedStatus,
+                        setSelectedStatus,
+                        selectedSpecies,
+                        setSelectedSpecies,
+                      }: IFilterButton): React.JSX.Element => {
+  const [ isClicked, setIsClicked ] = useState(false);
   
   const handleButtonClick = () => {
-    setIsClicked((prevState): boolean => !prevState)
-  }
+    setIsClicked(prevState => !prevState);
+  };
+  
+  const handleStatusToggle = (option: string) => {
+    setSelectedStatus(selectedStatus === option ? '' : option);
+  };
+  
+  const handleSpeciesToggle = (option: string) => {
+    setSelectedSpecies(selectedSpecies === option ? '' : option);
+  };
+  
+  const handleApply = () => {
+    setIsClicked(false);
+  };
+  
+  const handleReset = () => {
+    setSelectedStatus('');
+    setSelectedSpecies('');
+  };
+  
   return (
     <>
-      <TouchableOpacity style={styles.filterButton} onPress={handleButtonClick}>
+      <TouchableOpacity
+        style={styles.filterButton}
+        onPress={handleButtonClick}
+      >
         <Text style={styles.filterText}>FILTER</Text>
-        <AntDesign name={isClicked ? "up" : "down"} size={10} color="#fff" style={styles.icon}/>
+        <AntDesign
+          name={isClicked ? 'up' : 'down'}
+          size={10}
+          color="#fff"
+          style={styles.icon}
+        />
       </TouchableOpacity>
+      
       <Modal
         visible={isClicked}
         transparent
@@ -27,11 +66,18 @@ const FilterButton = () => {
           <View style={styles.modalOverlay}/>
         </TouchableWithoutFeedback>
         <View style={styles.modalContent}>
-          <FilterPanel/>
+          <FilterOptions
+            handleReset={handleReset}
+            handleApply={handleApply}
+            selectedStatus={selectedStatus}
+            selectedSpecies={selectedSpecies}
+            handleStatusToggle={handleStatusToggle}
+            handleSpeciesToggle={handleSpeciesToggle}
+          />
         </View>
       </Modal>
     </>
   );
-}
+};
 
 export default FilterButton;

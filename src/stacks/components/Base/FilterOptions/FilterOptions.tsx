@@ -1,45 +1,40 @@
-import React, { useState } from 'react';
-import { ScrollView, TouchableOpacity, View, } from 'react-native';
+import React from 'react';
+import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import { characterStatus } from "../../../../api/characterType";
-import { ButtonVariant } from "../Button/ButtonVariants";
-import Button from "../Button/Button";
-import Wrapper from "../Wrapper/Wrapper";
-import TitleText from "../TitleText/TitleText";
+import { characterStatus } from '../../../../api/characterType';
+import { ButtonVariant } from '../Button/ButtonVariants';
+import Button from '../Button/Button';
+import Wrapper from '../Wrapper/Wrapper';
+import TitleText from '../TitleText/TitleText';
 import { styles } from './FilterOptions.styles';
 
 const STATUS_OPTIONS: characterStatus[] = Object.values(characterStatus);
-const SPECIES_OPTIONS: string[] = [ 'Human', 'Humanoid', 'Alien', 'Robot' ];
+const SPECIES_OPTIONS: string[] = [ 'Human', 'Humanoid', 'Alien', 'Robot', 'Unknown' ];
 
-export const FilterOptions = (): React.JSX.Element => {
-  const [ selectedStatus, setSelectedStatus ] = useState<string>('');
-  const [ selectedSpecies, setSelectedSpecies ] = useState<string>('');
-  
-  const handleToggle = (
-    toggledOption: string,
-    setList: React.Dispatch<React.SetStateAction<string>>
-  ) => {
-    setList((currentList) =>
-      currentList === toggledOption ? '' : toggledOption
-    );
-  };
-  
-  const handleReset = () => {
-    setSelectedStatus('');
-    setSelectedSpecies('');
-  };
-  
-  const handleApply = () => {
-    // TODO handle Apply button behavior
-  };
-  
+interface IFilterOptions {
+  handleReset: () => void;
+  handleApply: () => void;
+  selectedStatus: string;
+  selectedSpecies: string;
+  handleStatusToggle: (option: string) => void;
+  handleSpeciesToggle: (option: string) => void;
+}
+
+export const FilterOptions = ({
+                                handleReset,
+                                handleApply,
+                                selectedStatus,
+                                selectedSpecies,
+                                handleStatusToggle,
+                                handleSpeciesToggle,
+                              }: IFilterOptions): React.JSX.Element => {
   const renderOption = (
     label: string,
-    selectedList: string,
+    selectedValue: string,
     onToggle: () => void
   ) => {
-    const checked = selectedList === label;
+    const checked = selectedValue === label;
     return (
       <TouchableOpacity
         key={label}
@@ -60,22 +55,36 @@ export const FilterOptions = (): React.JSX.Element => {
   return (
     <Wrapper>
       <ScrollView>
-        <TitleText title="STATUS" type='label'/>
-        {STATUS_OPTIONS.map((status) =>
-          renderOption(status, selectedStatus, () =>
-            handleToggle(status, setSelectedStatus)
+        <TitleText title="STATUS" type="label"/>
+        {STATUS_OPTIONS.map(status =>
+          renderOption(
+            status,
+            selectedStatus,
+            () => handleStatusToggle(status)
           )
         )}
-        <TitleText title="SPECIES" type='label'/>
-        {SPECIES_OPTIONS.map((species) =>
-          renderOption(species, selectedSpecies, () =>
-            handleToggle(species, setSelectedSpecies)
+        
+        <TitleText title="SPECIES" type="label"/>
+        {SPECIES_OPTIONS.map(species =>
+          renderOption(
+            species,
+            selectedSpecies,
+            () => handleSpeciesToggle(species)
           )
         )}
       </ScrollView>
+      
       <View style={styles.buttonsRow}>
-        <Button title='Reset' onPress={handleReset} variant={ButtonVariant.PrimaryOutline}/>
-        <Button title='Apply' onPress={handleApply} variant={ButtonVariant.Primary}/>
+        <Button
+          title="Reset"
+          onPress={handleReset}
+          variant={ButtonVariant.PrimaryOutline}
+        />
+        <Button
+          title="Apply"
+          onPress={handleApply}
+          variant={ButtonVariant.Primary}
+        />
       </View>
     </Wrapper>
   );
