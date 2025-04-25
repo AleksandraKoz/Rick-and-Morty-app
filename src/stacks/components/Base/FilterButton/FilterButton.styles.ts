@@ -19,4 +19,14 @@ export const styles = StyleSheet.create({
   icon: {
     marginLeft: 8,
   },
+  modalOverlay: {
+    flex: 1,
+  },
+  modalContent: {
+    position: 'absolute',
+    top: 290,
+    left: 16,
+    right: 16,
+    zIndex: 9999,
+  },
 });
