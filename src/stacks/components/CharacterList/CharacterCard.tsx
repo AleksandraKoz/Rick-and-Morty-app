@@ -27,15 +27,15 @@ const CharacterCard = ({ characterData }: TCharacterListCard) => {
   };
   
   return (
-    <TouchableOpacity onPress={() => handleCardClick(characterData)}>
-      <Wrapper style={styles.cardContainer}>
+    <Wrapper>
+      <TouchableOpacity onPress={() => handleCardClick(characterData)} style={styles.cardContainer}>
         <CharacterCardData characterData={characterData}/>
         <View style={styles.imageContainer}>
           <Image source={{ uri: characterData.image }} style={styles.avatar}/>
-          <LikeButton/>
+          <LikeButton character={characterData}/>
         </View>
-      </Wrapper>
-    </TouchableOpacity>
+      </TouchableOpacity>
+    </Wrapper>
   );
 };
 

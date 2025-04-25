@@ -29,7 +29,8 @@ const CharacterListScreen = () => {
       <NavBar/>
       <FlatList
         data={characters}
-        contentContainerStyle={styles.container}
+        style={styles.listBackground}
+        contentContainerStyle={styles.listPadding}
         ListHeaderComponent={<MainScreenHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (

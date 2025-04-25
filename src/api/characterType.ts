@@ -22,7 +22,10 @@ export type Character = {
     name: string,
     url: string,
   };
-  location: Record<string, string>;
+  location: {
+    name: string,
+    url: string,
+  }
   image: string;
   episode: string[];
   url: string;

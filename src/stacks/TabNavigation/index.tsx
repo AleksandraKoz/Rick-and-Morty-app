@@ -23,7 +23,6 @@ export const TabNavigationStack = () => {
         tabBarIconStyle: { paddingTop: 0, marginTop: 8 },
         tabBarLabelStyle: { fontStyle: '400', fontSize: 14 },
         tabBarStyle: {
-          position: 'absolute',
           height: 75 + insets.bottom,
           paddingBottom: insets.bottom,
         },

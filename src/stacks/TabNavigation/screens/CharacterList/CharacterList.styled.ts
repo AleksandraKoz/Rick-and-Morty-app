@@ -5,9 +5,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#162C1B'
   },
-  container: {
-    padding: 16,
+  listBackground: {
     backgroundColor: '#F4F6F5',
-    flex: 1
   },
+  listPadding: {
+    padding: 16,
+  }
 });
