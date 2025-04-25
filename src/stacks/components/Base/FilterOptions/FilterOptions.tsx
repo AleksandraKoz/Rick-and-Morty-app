@@ -9,7 +9,7 @@ import Wrapper from '../Wrapper/Wrapper';
 import { styles } from './FilterOptions.styles';
 
 const STATUS_OPTIONS: characterStatus[] = Object.values(characterStatus);
-const SPECIES_OPTIONS: string[] = [ 'Human', 'Humanoid', 'Alien', 'Robot', 'Unknown' ];
+const SPECIES_OPTIONS: string[] = [ 'Human', 'Humanoid', 'Alien', 'Robot', 'Animal', 'Disease', 'Cronenberg', 'Poopybutthole', 'Mythological Creature', 'Unknown' ];
 
 interface IFilterOptions {
   handleReset: () => void;
