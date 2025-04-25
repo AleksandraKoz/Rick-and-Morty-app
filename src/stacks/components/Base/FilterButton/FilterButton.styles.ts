@@ -18,7 +18,10 @@ export const styles = StyleSheet.create({
   icon: {
     marginLeft: 8,
   },
-  modalOverlay: {
-    flex: 1,
+  dropdown: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    margin: 16
   },
 });

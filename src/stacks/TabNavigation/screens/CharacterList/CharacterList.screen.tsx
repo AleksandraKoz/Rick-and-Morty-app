@@ -33,6 +33,7 @@ const CharacterListScreen = () => {
       <FlatList
         data={characters}
         style={styles.listBackground}
+        stickyHeaderIndices={[ 0 ]}
         contentContainerStyle={styles.listPadding}
         ListHeaderComponent={
           <MainScreenHeader
@@ -45,6 +46,7 @@ const CharacterListScreen = () => {
             setSelectedSpecies={setSelectedSpecies}
           />
         }
+        ListHeaderComponentStyle={{ margin: -16 }}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <CharacterCard characterData={item}/>

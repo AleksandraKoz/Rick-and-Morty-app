@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Modal, Text, TouchableOpacity, TouchableWithoutFeedback, View, } from 'react-native';
+import { Text, TouchableOpacity, View, } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
 import FilterOptions from '../FilterOptions/FilterOptions';
@@ -49,23 +49,16 @@ const FilterButton = ({
           style={styles.icon}
         />
       </TouchableOpacity>
-      
-      <Modal
-        visible={isClicked}
-        transparent
-        animationType="fade"
-        onRequestClose={handleButtonClick}
-      >
-        <TouchableWithoutFeedback onPress={handleButtonClick}>
-          <View style={styles.modalOverlay}/>
-        </TouchableWithoutFeedback>
-        <FilterOptions
-          handleReset={handleReset}
-          handleApply={handleApply}
-          selectedStatus={selectedStatus}
-          selectedSpecies={selectedSpecies}
-        />
-      </Modal>
+      {isClicked && (
+        <View style={styles.dropdown}>
+          <FilterOptions
+            handleReset={handleReset}
+            handleApply={handleApply}
+            selectedStatus={selectedStatus}
+            selectedSpecies={selectedSpecies}
+          />
+        </View>
+      )}
     </>
   );
 };

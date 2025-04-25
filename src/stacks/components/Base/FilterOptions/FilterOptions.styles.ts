@@ -7,12 +7,8 @@ export const styles = StyleSheet.create({
     marginTop: 16,
   },
   modalContent: {
-    position: 'absolute',
-    top: 290,
-    left: 16,
-    right: 16,
-    zIndex: 9999,
+    top: 115,
     padding: 16,
-    maxHeight: '40%',
+    maxHeight: '200%',
   },
 });
