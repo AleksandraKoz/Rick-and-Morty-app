@@ -8,7 +8,9 @@ export const styles = StyleSheet.create({
   },
   modalContent: {
     top: 115,
-    padding: 16,
     maxHeight: '200%',
+  },
+  wrapperContent: {
+    padding: 16,
   },
 });

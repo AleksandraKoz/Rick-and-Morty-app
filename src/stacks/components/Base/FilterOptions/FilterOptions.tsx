@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { Pressable, ScrollView, View } from 'react-native';
 
 import { CharacterSpecies, characterStatus } from '../../../../api/characterType';
 import { ButtonVariant } from '../Button/ButtonVariants';
@@ -15,12 +15,14 @@ interface IFilterOptions {
   handleApply: (status: string, species: string) => void;
   selectedStatus: string;
   selectedSpecies: string;
+  handleFilterButtonClick: () => void
 }
 
 export const FilterOptions = ({
                                 handleApply,
                                 selectedStatus,
                                 selectedSpecies,
+                                handleFilterButtonClick
                               }: IFilterOptions): React.JSX.Element => {
   const [ tempSelectedStatus, setTempSelectedStatus ] = useState<string>(selectedStatus)
   const [ tempSelectedSpecies, setTempSelectedSpecies ] = useState<string>(selectedSpecies)
@@ -39,34 +41,36 @@ export const FilterOptions = ({
   };
   
   return (
-    <Wrapper style={styles.modalContent}>
-      <ScrollView>
-        <OptionsSection
-          title="STATUS"
-          options={STATUS_OPTIONS}
-          selectedValue={tempSelectedStatus}
-          onToggle={handleStatusToggle}
-        />
-        <OptionsSection
-          title="SPECIES"
-          options={SPECIES_OPTIONS}
-          selectedValue={tempSelectedSpecies}
-          onToggle={handleSpeciesToggle}
-        />
-      </ScrollView>
-      <View style={styles.buttonsRow}>
-        <Button
-          title="Reset"
-          onPress={handleReset}
-          variant={ButtonVariant.PrimaryOutline}
-        />
-        <Button
-          title="Apply"
-          onPress={() => handleApply(tempSelectedStatus, tempSelectedSpecies)}
-          variant={ButtonVariant.Primary}
-        />
-      </View>
-    </Wrapper>
+    <Pressable onPress={handleFilterButtonClick} style={styles.modalContent}>
+      <Wrapper style={styles.wrapperContent}>
+        <ScrollView>
+          <OptionsSection
+            title="STATUS"
+            options={STATUS_OPTIONS}
+            selectedValue={tempSelectedStatus}
+            onToggle={handleStatusToggle}
+          />
+          <OptionsSection
+            title="SPECIES"
+            options={SPECIES_OPTIONS}
+            selectedValue={tempSelectedSpecies}
+            onToggle={handleSpeciesToggle}
+          />
+        </ScrollView>
+        <View style={styles.buttonsRow}>
+          <Button
+            title="Reset"
+            onPress={handleReset}
+            variant={ButtonVariant.PrimaryOutline}
+          />
+          <Button
+            title="Apply"
+            onPress={() => handleApply(tempSelectedStatus, tempSelectedSpecies)}
+            variant={ButtonVariant.Primary}
+          />
+        </View>
+      </Wrapper>
+    </Pressable>
   );
 }
 

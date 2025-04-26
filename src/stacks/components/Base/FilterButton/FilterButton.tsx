@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Text, TouchableOpacity, View, } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
 
@@ -10,6 +10,8 @@ interface IFilterButton {
   setSelectedStatus: (status: string) => void;
   selectedSpecies: string;
   setSelectedSpecies: (species: string) => void;
+  isFilterClicked: boolean;
+  handleFilterButtonClick: (canExecute: boolean) => void;
 }
 
 const FilterButton = ({
@@ -17,39 +19,37 @@ const FilterButton = ({
                         setSelectedStatus,
                         selectedSpecies,
                         setSelectedSpecies,
+                        isFilterClicked,
+                        handleFilterButtonClick
                       }: IFilterButton): React.JSX.Element => {
-  const [ isClicked, setIsClicked ] = useState(false);
-  
-  const handleButtonClick = () => {
-    setIsClicked(prevState => !prevState);
-  };
   
   const handleApply = (status: string, species: string) => {
     setSelectedStatus(status);
     setSelectedSpecies(species);
-    handleButtonClick()
+    handleFilterButtonClick(true)
   };
   
   return (
     <>
       <TouchableOpacity
-        style={{ ...styles.filterButton, backgroundColor: isClicked ? '#162C1B' : '#224229' }}
-        onPress={handleButtonClick}
+        style={{ ...styles.filterButton, backgroundColor: isFilterClicked ? '#162C1B' : '#224229' }}
+        onPress={() => handleFilterButtonClick(true)}
       >
         <Text style={styles.filterText}>FILTER</Text>
         <AntDesign
-          name={isClicked ? 'up' : 'down'}
+          name={isFilterClicked ? 'up' : 'down'}
           size={10}
           color="#fff"
           style={styles.icon}
         />
       </TouchableOpacity>
-      {isClicked && (
+      {isFilterClicked && (
         <View style={styles.dropdown}>
           <FilterOptions
             handleApply={handleApply}
             selectedStatus={selectedStatus}
             selectedSpecies={selectedSpecies}
+            handleFilterButtonClick={() => handleFilterButtonClick(false)}
           />
         </View>
       )}

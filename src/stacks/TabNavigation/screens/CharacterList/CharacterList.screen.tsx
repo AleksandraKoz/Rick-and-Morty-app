@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ActivityIndicator, FlatList, SafeAreaView } from 'react-native';
+import { ActivityIndicator, FlatList, Pressable, SafeAreaView } from 'react-native';
 
 import NavBar from '../../../components/Base/NavBar/NavBar';
 import CharacterCard from '../../../components/CharacterList/CharacterCard';
@@ -11,6 +11,7 @@ const CharacterListScreen = () => {
   const [ searchTerm, setSearchTerm ] = useState('');
   const [ selectedStatus, setSelectedStatus ] = useState<string>('');
   const [ selectedSpecies, setSelectedSpecies ] = useState<string>('');
+  const [ isFilterClicked, setIsFilterClicked ] = useState<boolean>(false);
   
   const {
     data,
@@ -27,36 +28,48 @@ const CharacterListScreen = () => {
     }
   };
   
+  const handleFilterButtonClick = (avoidUnnecessaryClick = true) => {
+    console.log(avoidUnnecessaryClick)
+    if (avoidUnnecessaryClick) {
+      setIsFilterClicked(prevState => !prevState);
+    }
+  };
+  
+  
   return (
     <SafeAreaView style={styles.background}>
-      <NavBar/>
-      <FlatList
-        data={characters}
-        style={styles.listBackground}
-        stickyHeaderIndices={[ 0 ]}
-        contentContainerStyle={styles.listPadding}
-        ListHeaderComponent={
-          <MainScreenHeader
-            searchTerm={searchTerm}
-            setSearchTerm={setSearchTerm}
-            isAllCharactersScreen
-            selectedStatus={selectedStatus}
-            setSelectedStatus={setSelectedStatus}
-            selectedSpecies={selectedSpecies}
-            setSelectedSpecies={setSelectedSpecies}
-          />
-        }
-        ListHeaderComponentStyle={{ margin: -16 }}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item }) => (
-          <CharacterCard characterData={item}/>
-        )}
-        onEndReached={loadMore}
-        onEndReachedThreshold={0.5}
-        ListFooterComponent={
-          isFetchingNextPage ? <ActivityIndicator style={{ marginVertical: 16 }}/> : null
-        }
-      />
+      <Pressable onPress={() => handleFilterButtonClick(isFilterClicked)} style={styles.background}>
+        <NavBar/>
+        <FlatList
+          data={characters}
+          style={styles.listBackground}
+          stickyHeaderIndices={[ 0 ]}
+          contentContainerStyle={styles.listPadding}
+          ListHeaderComponent={
+            <MainScreenHeader
+              searchTerm={searchTerm}
+              setSearchTerm={setSearchTerm}
+              isAllCharactersScreen
+              selectedStatus={selectedStatus}
+              setSelectedStatus={setSelectedStatus}
+              selectedSpecies={selectedSpecies}
+              setSelectedSpecies={setSelectedSpecies}
+              isFilterClicked={isFilterClicked}
+              handleFilterButtonClick={(val: boolean) => handleFilterButtonClick(val)}
+            />
+          }
+          ListHeaderComponentStyle={{ margin: -16 }}
+          keyExtractor={(item) => item.id.toString()}
+          renderItem={({ item }) => (
+            <CharacterCard characterData={item}/>
+          )}
+          onEndReached={loadMore}
+          onEndReachedThreshold={0.5}
+          ListFooterComponent={
+            isFetchingNextPage ? <ActivityIndicator style={{ marginVertical: 16 }}/> : null
+          }
+        />
+      </Pressable>
     </SafeAreaView>
   );
 };

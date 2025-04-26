@@ -14,6 +14,8 @@ interface IMainScreenHeader {
   setSelectedStatus: (status: string) => void;
   selectedSpecies: string;
   setSelectedSpecies: (species: string) => void;
+  isFilterClicked: boolean;
+  handleFilterButtonClick: (canExecute: boolean) => void;
 }
 
 const MainScreenHeader = ({
@@ -24,6 +26,8 @@ const MainScreenHeader = ({
                             setSelectedStatus,
                             selectedSpecies,
                             setSelectedSpecies,
+                            isFilterClicked,
+                            handleFilterButtonClick
                           }: IMainScreenHeader): React.JSX.Element => (
   <View style={styles.headerBackground}>
     <TitleText title="Characters"/>
@@ -34,6 +38,8 @@ const MainScreenHeader = ({
         setSelectedStatus={setSelectedStatus}
         selectedSpecies={selectedSpecies}
         setSelectedSpecies={setSelectedSpecies}
+        isFilterClicked={isFilterClicked}
+        handleFilterButtonClick={(val: boolean) => handleFilterButtonClick(val)}
       />
     }
   </View>
