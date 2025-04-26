@@ -7,17 +7,17 @@ import { styles } from './CharacterDetailsDataSection.styles';
 
 type FieldKey = keyof Character;
 
-interface ICharacterDetailsDataSection {
+interface ICharacterDataSection {
   characterData: Character;
   fields: FieldKey[];
   type: 'row' | 'column';
 }
 
-const CharacterDetailsDataSection = ({
-                                       characterData,
-                                       fields,
-                                       type,
-                                     }: ICharacterDetailsDataSection): React.JSX.Element => {
+const CharacterDataSection = ({
+                                characterData,
+                                fields,
+                                type,
+                              }: ICharacterDataSection): React.JSX.Element => {
   const containerStyle =
     type === 'row' ? styles.dataSectionWrapper : styles.infoContainer;
   const itemStyle =
@@ -42,4 +42,4 @@ const CharacterDetailsDataSection = ({
   );
 };
 
-export default CharacterDetailsDataSection;
+export default CharacterDataSection;

@@ -7,7 +7,7 @@ import Wrapper from '../../../components/Common/Wrapper/Wrapper';
 import LikeButton from '../../../components/Common/LikeButton/LikeButton';
 import GoBackButton from '../../../components/CharacterDetails/GoBackButton/GoBackButton';
 import CharacterName from '../../../components/CharacterDetails/CharacterName/CharacterName';
-import CharacterDetailsDataSection from "../../../components/Common/CharacterDataSection/CharacterDataSection";
+import CharacterDataSection from '../../../components/Common/CharacterDataSection/CharacterDataSection';
 import { CharacterDetailsStackParamList } from '../../CharacterDetails.routes';
 import { Character } from '../../../../api/characterType';
 import { styles } from './CharacterDetails.styled';
@@ -31,7 +31,7 @@ const CharacterDetailsScreen = () => {
         <Wrapper style={{ padding: 24 }}>
           <Image source={{ uri: character.image }} style={styles.avatar}/>
           <CharacterName name={character.name}/>
-          <CharacterDetailsDataSection
+          <CharacterDataSection
             characterData={character}
             fields={characterKeys}
             type="row"

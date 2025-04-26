@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import CharacterDetailsDataSection from '../../Common/CharacterDataSection/CharacterDataSection';
+import CharacterDataSection from '../../Common/CharacterDataSection/CharacterDataSection';
 import LikeButton from '../../Common/LikeButton/LikeButton';
 import Wrapper from '../../Common/Wrapper/Wrapper';
 import { useCharactersContext } from '../../../../context/CharactersContext';
@@ -30,7 +30,7 @@ const CharacterCard = ({ characterData }: TCharacterListCard): React.JSX.Element
   return (
     <Wrapper>
       <TouchableOpacity onPress={() => handleCardClick(characterData)} style={styles.cardContainer}>
-        <CharacterDetailsDataSection
+        <CharacterDataSection
           characterData={characterData}
           fields={characterKeys}
           type="column"
