@@ -28,9 +28,8 @@ const CharacterListScreen = () => {
     }
   };
   
-  const handleFilterButtonClick = (avoidUnnecessaryClick = true) => {
-    console.log(avoidUnnecessaryClick)
-    if (avoidUnnecessaryClick) {
+  const handleFilterButtonClick = (canExecute: boolean = true) => {
+    if (canExecute) {
       setIsFilterClicked(prevState => !prevState);
     }
   };
