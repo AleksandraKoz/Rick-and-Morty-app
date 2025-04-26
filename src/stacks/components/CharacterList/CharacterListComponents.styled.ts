@@ -27,23 +27,4 @@ export const styles = StyleSheet.create({
     borderColor: '#224229',
     backgroundColor: '#224229',
   },
-  likeButton: {
-    position: 'absolute',
-    bottom: 10,
-    right: 10,
-    backgroundColor: '#F4F6F4',
-    borderColor: '#224229',
-    borderWidth: 1,
-    borderRadius: 20,
-    paddingHorizontal: 12,
-    paddingVertical: 4,
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  likeText: {
-    marginLeft: 6,
-    color: '#162C1B',
-    fontWeight: '400',
-    fontSize: 14,
-  },
 });

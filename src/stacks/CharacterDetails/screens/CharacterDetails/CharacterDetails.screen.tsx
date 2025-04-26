@@ -6,10 +6,10 @@ import NavBar from '../../../components/Common/NavBar/NavBar';
 import Wrapper from '../../../components/Common/Wrapper/Wrapper';
 import GoBackButton from "../../../components/CharacterDetails/GoBackButton/GoBackButton";
 import CharacterName from '../../../components/CharacterDetails/CharacterName';
-import WideLikeButton from '../../../components/CharacterDetails/WideLikeButton';
 import CharacterDetailsDataSection from '../../../components/CharacterDetails/CharacterDetailsDataSection';
 import { CharacterDetailsStackParamList } from '../../CharacterDetails.routes';
 import { styles } from './CharacterDetails.styled';
+import LikeButton from "../../../components/Common/LikeButton/LikeButton";
 
 type DetailsRouteProp = RouteProp<
   CharacterDetailsStackParamList,
@@ -29,7 +29,7 @@ const CharacterDetailsScreen = () => {
           <Image source={{ uri: character.image }} style={styles.avatar}/>
           <CharacterName name={character.name}/>
           <CharacterDetailsDataSection characterData={character}/>
-          <WideLikeButton/>
+          <LikeButton variant="wide"/>
         </Wrapper>
       </ScrollView>
     </SafeAreaView>

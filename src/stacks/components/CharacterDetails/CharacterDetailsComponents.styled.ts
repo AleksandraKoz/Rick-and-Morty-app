@@ -12,20 +12,6 @@ export const styles = StyleSheet.create({
     marginTop: 24,
     marginHorizontal: 8,
   },
-  likeButtonWrapper: {
-    backgroundColor: '#224229',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'row',
-    borderRadius: 20,
-    marginTop: 16,
-    padding: 8,
-  },
-  likeText: {
-    color: '#fff',
-    marginLeft: 8,
-    fontSize: 14,
-  },
   dataSectionWrapper: {
     flexDirection: 'row',
     flexWrap: 'wrap',

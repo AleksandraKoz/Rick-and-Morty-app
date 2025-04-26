@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 
 import CharacterCardData from './CharacterCardData';
 import Wrapper from '../Common/Wrapper/Wrapper';
-import LikeButton from './LikeButton';
+import LikeButton from '../Common/LikeButton/LikeButton';
 import { useCharactersContext } from '../../../context/CharactersContext';
 import { MainStackNavigationProp } from '../../Main/Main.routes';
 import { Character } from '../../../api/characters';
