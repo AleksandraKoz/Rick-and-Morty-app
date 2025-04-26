@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import TitleText from "../Common/TitleText/TitleText";
-import { styles } from './CharacterDetailsComponents.styled';
+import TitleText from '../../Common/TitleText/TitleText';
+import { styles } from './CharacterName.styles';
 
 type TCharacterName = { name: string }
 

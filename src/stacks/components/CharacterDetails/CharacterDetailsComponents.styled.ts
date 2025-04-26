@@ -8,10 +8,6 @@ export const styles = StyleSheet.create({
     width: '48%',
     marginTop: 16,
   },
-  nameWrapper: {
-    marginTop: 24,
-    marginHorizontal: 8,
-  },
   dataSectionWrapper: {
     flexDirection: 'row',
     flexWrap: 'wrap',

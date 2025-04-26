@@ -5,7 +5,7 @@ import { RouteProp, useRoute, } from '@react-navigation/native';
 import NavBar from '../../../components/Common/NavBar/NavBar';
 import Wrapper from '../../../components/Common/Wrapper/Wrapper';
 import GoBackButton from "../../../components/CharacterDetails/GoBackButton/GoBackButton";
-import CharacterName from '../../../components/CharacterDetails/CharacterName';
+import CharacterName from '../../../components/CharacterDetails/CharacterName/CharacterName';
 import CharacterDetailsDataSection from '../../../components/CharacterDetails/CharacterDetailsDataSection';
 import { CharacterDetailsStackParamList } from '../../CharacterDetails.routes';
 import { styles } from './CharacterDetails.styled';
