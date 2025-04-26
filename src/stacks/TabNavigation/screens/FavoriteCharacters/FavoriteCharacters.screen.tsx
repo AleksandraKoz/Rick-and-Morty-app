@@ -22,6 +22,7 @@ const FavoriteCharactersScreen = () => {
       <FlatList
         data={filtered}
         style={styles.listBackground}
+        stickyHeaderIndices={[ 0 ]}
         contentContainerStyle={styles.listPadding}
         ListHeaderComponentStyle={{ margin: -16 }}
         ListHeaderComponent={<MainScreenHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>}
