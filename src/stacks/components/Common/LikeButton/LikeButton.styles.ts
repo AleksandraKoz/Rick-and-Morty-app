@@ -1,31 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  cardContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  infoContainer: {
-    margin: 10,
-    flex: 1,
-  },
-  infoItem: {
-    marginBottom: 18
-  },
-  imageContainer: {
-    width: 200,
-    height: 200,
-    borderRadius: 24,
-    overflow: 'hidden',
-    position: 'relative',
-  },
-  avatar: {
-    width: '100%',
-    height: '100%',
-    borderRadius: 24,
-    borderWidth: 1,
-    borderColor: '#224229',
+  likeButtonWide: {
     backgroundColor: '#224229',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+    borderRadius: 20,
+    marginTop: 16,
+    padding: 8,
   },
   likeButton: {
     position: 'absolute',
@@ -40,10 +23,15 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
+  likeTextWide: {
+    color: '#fff',
+    marginLeft: 8,
+    fontSize: 14,
+  },
   likeText: {
+    fontSize: 14,
     marginLeft: 6,
     color: '#162C1B',
     fontWeight: '400',
-    fontSize: 14,
   },
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import TitleText from '../../TitleText/TitleText';
+import TitleText from '../../../Common/TitleText/TitleText';
 import { styles } from './OptionsSection.styles';
 
 interface IOptionsSection {

@@ -8,7 +8,7 @@ interface IWrapper {
   style?: ViewStyle
 }
 
-const Wrapper = ({ children, style }: IWrapper) => {
+const Wrapper = ({ children, style }: IWrapper): React.JSX.Element => {
   return (
     <View style={{ ...styles.wrapper, ...style }}>
       {children}

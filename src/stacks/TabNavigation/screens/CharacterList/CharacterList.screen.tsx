@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { ActivityIndicator, FlatList, Pressable, SafeAreaView } from 'react-native';
 
-import NavBar from '../../../components/Base/NavBar/NavBar';
-import CharacterCard from '../../../components/CharacterList/CharacterCard';
-import MainScreenHeader from "../../../components/Base/MainScreenHeader/MainScreenHeader";
+import NavBar from '../../../components/Common/NavBar/NavBar';
+import CharacterCard from '../../../components/CharacterList/CharacterCard/CharacterCard';
+import MainScreenHeader from "../../../components/CharacterList/MainScreenHeader/MainScreenHeader";
 import { useCharacters } from '../../../../hooks/useCharacters';
 import { styles } from './CharacterList.styled';
 

@@ -9,7 +9,7 @@ type TGoBackButton = {
   screenName: 'Characters List' | 'Favourites List'
 }
 
-const GoBackButton = ({ screenName }: TGoBackButton) => {
+const GoBackButton = ({ screenName }: TGoBackButton): React.JSX.Element => {
   const navigation = useNavigation<CharacterDetailsStackNavigationProp>();
   const buttonTitle = '← Go back to '
   

@@ -9,7 +9,7 @@ interface ISearchBar {
   onChangeQuery: (text: string) => void;
 }
 
-const SearchBar = ({ query, onChangeQuery }: ISearchBar) => (
+const SearchBar = ({ query, onChangeQuery }: ISearchBar): React.JSX.Element => (
   <View style={styles.container}>
     <EvilIcons name="search" size={24} color="#162C1B"/>
     <TextInput

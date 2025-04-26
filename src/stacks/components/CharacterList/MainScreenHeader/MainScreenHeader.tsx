@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import TitleText from '../TitleText/TitleText';
+import TitleText from '../../Common/TitleText/TitleText';
 import SearchBar from '../SearchBar/SearchBar';
 import FilterButton from '../FilterFeature/FilterButton/FilterButton';
 import { styles } from './MainScreenHeader.styles';
