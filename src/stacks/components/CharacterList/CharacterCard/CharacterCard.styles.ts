@@ -5,13 +5,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  infoContainer: {
-    margin: 10,
-    flex: 1,
-  },
-  infoItem: {
-    marginBottom: 18
-  },
   imageContainer: {
     width: 200,
     height: 200,

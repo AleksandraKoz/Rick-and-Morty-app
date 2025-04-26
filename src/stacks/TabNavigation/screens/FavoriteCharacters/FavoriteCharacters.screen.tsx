@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FlatList, SafeAreaView, } from 'react-native';
 
 import MainScreenHeader from '../../../components/CharacterList/MainScreenHeader/MainScreenHeader';
-import CharacterCard from '../../../components/CharacterList/CharacterCard';
+import CharacterCard from '../../../components/CharacterList/CharacterCard/CharacterCard';
 import NavBar from '../../../components/Common/NavBar/NavBar';
 import { useFavouriteCharacters } from '../../../../hooks/useFavouriteCharacters';
 import { styles } from './FavoriteCharacters.styled';

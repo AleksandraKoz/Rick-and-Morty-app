@@ -1,9 +1,9 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import { Character } from '../../../api/characters';
-import { styles } from './CharacterListComponents.styled';
-import TitleText from "../Common/TitleText/TitleText";
+import TitleText from "../../Common/TitleText/TitleText";
+import { Character } from '../../../../api/characters';
+import { styles } from './CharacterCardData.styles';
 
 type TCharacterCardData = {
   characterData: Character;

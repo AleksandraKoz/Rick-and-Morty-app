@@ -2,13 +2,13 @@ import React from 'react';
 import { Image, TouchableOpacity, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import CharacterCardData from './CharacterCardData';
-import Wrapper from '../Common/Wrapper/Wrapper';
-import LikeButton from '../Common/LikeButton/LikeButton';
-import { useCharactersContext } from '../../../context/CharactersContext';
-import { MainStackNavigationProp } from '../../Main/Main.routes';
-import { Character } from '../../../api/characters';
-import { styles } from './CharacterListComponents.styled';
+import CharacterCardData from '../CharacterCardData/CharacterCardData';
+import Wrapper from '../../Common/Wrapper/Wrapper';
+import LikeButton from '../../Common/LikeButton/LikeButton';
+import { useCharactersContext } from '../../../../context/CharactersContext';
+import { MainStackNavigationProp } from '../../../Main/Main.routes';
+import { Character } from '../../../../api/characters';
+import { styles } from './CharacterCard.styles';
 
 type TCharacterListCard = {
   characterData: Character;
