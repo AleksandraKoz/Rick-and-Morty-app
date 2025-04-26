@@ -4,7 +4,7 @@ import { RouteProp, useRoute, } from '@react-navigation/native';
 
 import NavBar from '../../../components/Base/NavBar/NavBar';
 import Wrapper from '../../../components/Base/Wrapper/Wrapper';
-import GoBackButton from "../../../components/Base/GoBackButton/GoBackButton";
+import GoBackButton from "../../../components/CharacterDetails/GoBackButton/GoBackButton";
 import CharacterName from '../../../components/CharacterDetails/CharacterName';
 import WideLikeButton from '../../../components/CharacterDetails/WideLikeButton';
 import CharacterDetailsDataSection from '../../../components/CharacterDetails/CharacterDetailsDataSection';

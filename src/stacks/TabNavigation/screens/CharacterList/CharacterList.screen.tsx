@@ -3,7 +3,7 @@ import { ActivityIndicator, FlatList, Pressable, SafeAreaView } from 'react-nati
 
 import NavBar from '../../../components/Base/NavBar/NavBar';
 import CharacterCard from '../../../components/CharacterList/CharacterCard';
-import MainScreenHeader from "../../../components/Base/MainScreenHeader/MainScreenHeader";
+import MainScreenHeader from "../../../components/CharacterList/MainScreenHeader/MainScreenHeader";
 import { useCharacters } from '../../../../hooks/useCharacters';
 import { styles } from './CharacterList.styled';
 
