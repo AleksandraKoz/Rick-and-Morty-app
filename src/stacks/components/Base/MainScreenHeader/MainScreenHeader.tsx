@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import TitleText from '../TitleText/TitleText';
 import SearchBar from '../SearchBar/SearchBar';
-import FilterButton from '../FilterButton/FilterButton';
+import FilterButton from '../FilterFeature/FilterButton/FilterButton';
 import { styles } from './MainScreenHeader.styles';
 
 interface IMainScreenHeader {
