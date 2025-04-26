@@ -23,6 +23,7 @@ const FavoriteCharactersScreen = () => {
         data={filtered}
         style={styles.listBackground}
         contentContainerStyle={styles.listPadding}
+        ListHeaderComponentStyle={{ margin: -16 }}
         ListHeaderComponent={<MainScreenHeader searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => <CharacterCard characterData={item}/>}
