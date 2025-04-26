@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Pressable, ScrollView, View } from 'react-native';
 
 import { CharacterSpecies, characterStatus } from '../../../../../api/characterType';
-import { ButtonVariant } from '../../../Base/Button/ButtonVariants';
+import { ButtonVariant } from '../../../Common/Button/ButtonVariants';
 import OptionsSection from "../OptionsSection/OptionsSection";
-import Button from '../../../Base/Button/Button';
-import Wrapper from '../../../Base/Wrapper/Wrapper';
+import Button from '../../../Common/Button/Button';
+import Wrapper from '../../../Common/Wrapper/Wrapper';
 import { styles } from './FilterOptions.styles';
 
 const STATUS_OPTIONS: characterStatus[] = Object.values(characterStatus);

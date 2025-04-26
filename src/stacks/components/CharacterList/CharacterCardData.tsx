@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import { Character } from '../../../api/characters';
 import { styles } from './CharacterListComponents.styled';
-import TitleText from "../Base/TitleText/TitleText";
+import TitleText from "../Common/TitleText/TitleText";
 
 type TCharacterCardData = {
   characterData: Character;

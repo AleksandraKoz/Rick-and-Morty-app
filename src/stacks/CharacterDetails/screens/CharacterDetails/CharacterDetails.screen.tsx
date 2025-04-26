@@ -2,8 +2,8 @@ import React from 'react';
 import { Image, SafeAreaView, ScrollView } from 'react-native';
 import { RouteProp, useRoute, } from '@react-navigation/native';
 
-import NavBar from '../../../components/Base/NavBar/NavBar';
-import Wrapper from '../../../components/Base/Wrapper/Wrapper';
+import NavBar from '../../../components/Common/NavBar/NavBar';
+import Wrapper from '../../../components/Common/Wrapper/Wrapper';
 import GoBackButton from "../../../components/CharacterDetails/GoBackButton/GoBackButton";
 import CharacterName from '../../../components/CharacterDetails/CharacterName';
 import WideLikeButton from '../../../components/CharacterDetails/WideLikeButton';

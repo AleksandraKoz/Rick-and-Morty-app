@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import TitleText from "../Base/TitleText/TitleText";
+import TitleText from "../Common/TitleText/TitleText";
 import { styles } from './CharacterDetailsComponents.styled';
 
 type TCharacterName = { name: string }
