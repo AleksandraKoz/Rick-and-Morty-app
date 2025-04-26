@@ -11,7 +11,7 @@ interface ICharacterDetailsDataSection {
   characterData: Character;
   fields: FieldKey[];
   type: 'row' | 'column';
-};
+}
 
 const CharacterDetailsDataSection = ({
                                        characterData,

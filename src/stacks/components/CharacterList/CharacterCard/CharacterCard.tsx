@@ -14,7 +14,7 @@ type TCharacterListCard = {
   characterData: Character;
 };
 
-const CharacterCard = ({ characterData }: TCharacterListCard) => {
+const CharacterCard = ({ characterData }: TCharacterListCard): React.JSX.Element => {
   const { setSelectedCharacter } = useCharactersContext();
   const { navigate } = useNavigation<MainStackNavigationProp>();
   const characterKeys: (keyof Character)[] = [ 'name', 'status', 'species' ];

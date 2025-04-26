@@ -6,7 +6,7 @@ import { styles } from './CharacterName.styles';
 
 type TCharacterName = { name: string }
 
-const CharacterName = ({ name }: TCharacterName) => {
+const CharacterName = ({ name }: TCharacterName): React.JSX.Element => {
   return (
     <View style={styles.nameWrapper}>
       <TitleText title="NAME" type="label"/>
