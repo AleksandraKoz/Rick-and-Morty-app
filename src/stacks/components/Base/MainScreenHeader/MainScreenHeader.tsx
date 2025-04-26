@@ -10,24 +10,27 @@ interface IMainScreenHeader {
   searchTerm: string;
   setSearchTerm: (term: string) => void;
   isAllCharactersScreen?: boolean;
-  selectedStatus: string;
-  setSelectedStatus: (status: string) => void;
-  selectedSpecies: string;
-  setSelectedSpecies: (species: string) => void;
-  isFilterClicked: boolean;
-  handleFilterButtonClick: (canExecute: boolean) => void;
+  selectedStatus?: string;
+  setSelectedStatus?: (status: string) => void;
+  selectedSpecies?: string;
+  setSelectedSpecies?: (species: string) => void;
+  isFilterClicked?: boolean;
+  handleFilterButtonClick?: (canExecute: boolean) => void;
 }
 
 const MainScreenHeader = ({
                             searchTerm,
                             setSearchTerm,
                             isAllCharactersScreen = false,
-                            selectedStatus,
-                            setSelectedStatus,
-                            selectedSpecies,
-                            setSelectedSpecies,
-                            isFilterClicked,
-                            handleFilterButtonClick
+                            selectedStatus = '',
+                            setSelectedStatus = () => {
+                            },
+                            selectedSpecies = '',
+                            setSelectedSpecies = () => {
+                            },
+                            isFilterClicked = false,
+                            handleFilterButtonClick = () => {
+                            },
                           }: IMainScreenHeader): React.JSX.Element => (
   <View style={styles.headerBackground}>
     <TitleText title="Characters"/>
