@@ -1,14 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  background: {
-    flex: 1,
-    backgroundColor: '#162C1B'
-  },
-  listBackground: {
+  headerBackground: {
     backgroundColor: '#F4F6F5',
+    paddingHorizontal: 16,
+    marginVertical: 16,
   },
-  listPadding: {
-    padding: 16,
-  }
 });

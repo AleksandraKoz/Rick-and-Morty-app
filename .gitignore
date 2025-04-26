@@ -34,3 +34,12 @@ yarn-error.*
 
 # typescript
 *.tsbuildinfo
+
+# WebStorm
+.idea/
+
+# Yarn
+.yarn/
+
+# Local
+*.lock
