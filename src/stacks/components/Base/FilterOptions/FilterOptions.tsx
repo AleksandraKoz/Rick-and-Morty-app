@@ -12,14 +12,12 @@ const STATUS_OPTIONS: characterStatus[] = Object.values(characterStatus);
 export const SPECIES_OPTIONS: string[] = Object.values(CharacterSpecies);
 
 interface IFilterOptions {
-  handleReset: () => void;
   handleApply: (status: string, species: string) => void;
   selectedStatus: string;
   selectedSpecies: string;
 }
 
 export const FilterOptions = ({
-                                handleReset,
                                 handleApply,
                                 selectedStatus,
                                 selectedSpecies,
@@ -33,6 +31,11 @@ export const FilterOptions = ({
   
   const handleSpeciesToggle = (option: string) => {
     setTempSelectedSpecies(tempSelectedSpecies === option ? '' : option);
+  };
+  
+  const handleReset = () => {
+    setTempSelectedStatus('');
+    setTempSelectedSpecies('');
   };
   
   return (

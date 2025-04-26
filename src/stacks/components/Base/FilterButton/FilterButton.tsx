@@ -30,11 +30,6 @@ const FilterButton = ({
     handleButtonClick()
   };
   
-  const handleReset = () => {
-    setSelectedStatus('');
-    setSelectedSpecies('');
-  };
-  
   return (
     <>
       <TouchableOpacity
@@ -52,7 +47,6 @@ const FilterButton = ({
       {isClicked && (
         <View style={styles.dropdown}>
           <FilterOptions
-            handleReset={handleReset}
             handleApply={handleApply}
             selectedStatus={selectedStatus}
             selectedSpecies={selectedSpecies}
