@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import CharacterDetailsCard from './CharacterDetailsCard';
+import CharacterDetailsCard from './CharacterDetailsCard/CharacterDetailsCard';
 import { Character } from '../../../api/characterType';
 import { styles } from './CharacterDetailsComponents.styled';
 

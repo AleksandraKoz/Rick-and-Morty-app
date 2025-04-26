@@ -1,8 +1,8 @@
 import React from 'react';
 import { View } from 'react-native';
 
-import TitleText from '../Common/TitleText/TitleText';
-import { styles } from './CharacterDetailsComponents.styled';
+import TitleText from '../../Common/TitleText/TitleText';
+import { styles } from '../CharacterDetailsComponents.styled';
 
 interface ICharacterDetailsCard {
   sectionName: string,
