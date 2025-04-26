@@ -4,13 +4,13 @@ import { RouteProp, useRoute, } from '@react-navigation/native';
 
 import NavBar from '../../../components/Common/NavBar/NavBar';
 import Wrapper from '../../../components/Common/Wrapper/Wrapper';
-import GoBackButton from "../../../components/CharacterDetails/GoBackButton/GoBackButton";
+import LikeButton from '../../../components/Common/LikeButton/LikeButton';
+import GoBackButton from '../../../components/CharacterDetails/GoBackButton/GoBackButton';
 import CharacterName from '../../../components/CharacterDetails/CharacterName/CharacterName';
-import CharacterDetailsDataSection
-  from '../../../components/CharacterDetails/CharacterDetailsDataSection/CharacterDetailsDataSection';
+import CharacterDetailsDataSection from "../../../components/Common/CharacterDataSection/CharacterDataSection";
 import { CharacterDetailsStackParamList } from '../../CharacterDetails.routes';
+import { Character } from '../../../../api/characterType';
 import { styles } from './CharacterDetails.styled';
-import LikeButton from "../../../components/Common/LikeButton/LikeButton";
 
 type DetailsRouteProp = RouteProp<
   CharacterDetailsStackParamList,
@@ -21,6 +21,8 @@ const CharacterDetailsScreen = () => {
   const { params } = useRoute<DetailsRouteProp>();
   const { character } = params;
   
+  const characterKeys: (keyof Character)[] = [ 'status', 'species', 'gender', 'origin' ];
+  
   return (
     <SafeAreaView style={styles.background}>
       <NavBar/>
@@ -29,7 +31,11 @@ const CharacterDetailsScreen = () => {
         <Wrapper style={{ padding: 24 }}>
           <Image source={{ uri: character.image }} style={styles.avatar}/>
           <CharacterName name={character.name}/>
-          <CharacterDetailsDataSection characterData={character}/>
+          <CharacterDetailsDataSection
+            characterData={character}
+            fields={characterKeys}
+            type="row"
+          />
           <LikeButton variant="wide"/>
         </Wrapper>
       </ScrollView>
