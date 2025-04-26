@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 
 import TitleText from '../../Common/TitleText/TitleText';
-import { styles } from '../CharacterDetailsComponents.styled';
+import { styles } from './CharacterDetailsCard.styles';
 
 interface ICharacterDetailsCard {
   sectionName: string,
